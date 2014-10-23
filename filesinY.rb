@@ -9,8 +9,9 @@ File.exists?('existing_file.txt') #returns true if existing_file.txt exists in s
 puts new_file.size #prints the size of a file
 
 #file access modes
-File.open('file.txt','w') #creates an empty file with a name file.txt. If the file has already existed, it's deleted and replaced with a new one
-File.open('file.txt','r') #can open only an already existing file
+File.open('file.txt','w') #write mode - creates an empty file named file.txt. It deletes an already existing file.txt
+File.open('file.txt','r') #read mode - can open only an already existing file 
+File.open('file.txt','a') #append mode - can read file.txt and write something to the end of the file. If the file doesn't exist, it'll be created
 
 #writing to a text file
 writing_file = File.open('writing.txt','w')
