@@ -3,6 +3,7 @@ class Wzorce
 	def initialize(wzorzec, tekst)
 		@wzorzec = wczytaj_wzorzec(wzorzec)
 		@tekst = wczytaj_wzorzec(tekst)
+		@pi = compute_prefix
 	end
 	
 	def wczytaj_wzorzec(nazwa_pliku)
@@ -95,26 +96,24 @@ class Wzorce
 	end
 
 	def knutt_morris_pratt
-		pi = compute_prefix
 		q=0
 		(0..@tekst.length).each { |i| 
 			while q > 0 and @tekst[i]!=@wzorzec[q+1]
-				q=pi[q]
+				q=@pi[q]
 			end
 			if @tekst[i] == @wzorzec[q+1]
 				q=q+1
 			end
 			if q == @wzorzec.length-1
 				puts "Znaleziono wzorzec na pozycji #{i-q}"
-				q=pi[q]
+				q=@pi[q]
 			end
 		}
 	end
 	
 	def compute_transaction_function(stan,current)
-		pi = compute_prefix
 		if stan == @wzorzec.length-1 or current!=@wzorzec[stan]
-			pi[stan]+1
+			@pi[stan]+1
 		else
 			stan+1
 		end
