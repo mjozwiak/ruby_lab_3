@@ -11,7 +11,8 @@ class Wzorce
 
 		plikWzorca.each_char {|c| 
 			if c != "\n"
-				wzorzec=wzorzec+c
+				#wzorzec=wzorzec+c
+				wzorzec<<c
 			end
 		}
 		plikWzorca.close
@@ -133,7 +134,7 @@ wzorce = Wzorce.new("wzorzec.txt","tekst.txt")
 puts 'Brute Force:'
 wzorce.brute#działa
 puts 'Robin Karp:'
-wzorce.robin_karp(26,11897) #na razie nie działa
+wzorce.robin_karp(26,11897) 
 puts 'Knutt Morris Pratt:'
 wzorce.knutt_morris_pratt
 puts 'Automation Matcher:'
